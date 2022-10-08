@@ -15,37 +15,6 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
-    <script>
-        function validate() {
-            var email =
-                document.forms.RegForm.EMail.value;
-            var password =
-                document.forms.RegForm.Password.value;
-            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
-
-
-            if (email == "" ) {
-                 error = " Please enter your e-mail address. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-            else if (!regEmail.test(email))
-            {
-                error = " Please enter a valid e-mail address. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-           
-            if (password == "") {
-                error = " Please enter your password. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-                            
-
-            return true;
-        }
-    </script>
 </head>
 <body>
     
@@ -53,7 +22,7 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
+    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Grocery </a>
 
     <nav class="navbar">
         <a href="#home">home</a>
@@ -107,18 +76,13 @@
         <a href="#" class="btn">checkout</a>
     </div>
 
-    <form action="signin.php" class="login-form" name="RegForm" onsubmit="return validate()" method="post">
+    <form action="" class="login-form">
         <h3>login now</h3>
-        <?php if (isset($_GET['error'])) { ?>
-			<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
-		<?php } ?>
-        <p style="color:red;" id="error_para" ></p>
-        <input type="email"  name="EMail"  placeholder="your email" class="box">
-        <input type="password" name="Password" placeholder="your password" class="box">
-        <input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?>>Remember Me
+        <input type="email" placeholder="your email" class="box">
+        <input type="password" placeholder="your password" class="box">
         <p>forget your password <a href="#">click here</a></p>
         <p>don't have an account <a href="register.php">create now</a></p>
-        <input type="submit" value="login now" name="login_form" class="btn">
+        <input type="submit" value="login now" class="btn">
     </form>
 
 </header>
@@ -530,19 +494,6 @@
 </section>
 
 <!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
