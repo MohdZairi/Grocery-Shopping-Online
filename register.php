@@ -197,7 +197,7 @@
                                         <p style="color:red;" id="error_para" ></p>
                                     </div>
 
-                                    <form class ="user" action= "register-checkup.php" id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+                                    <form class ="user" action= "register-check.php" id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
 			
 
                                         <div class="form-group">
@@ -246,7 +246,7 @@
                                     <hr>
 
                                     <div class="text-center">
-                                        <a class="small" href="index.html">Already have an account?</a>
+                                        <a class="small" href="index.php">Already have an account?</a>
                                     </div>
 
                                 </div>

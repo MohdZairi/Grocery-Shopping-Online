@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,6 @@
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
     </nav>
-
     <div class="icons">
         <div class="fas fa-bars" id="menu-btn"></div>
         <div class="fas fa-search" id="search-btn"></div>
@@ -81,14 +81,16 @@
         <input type="email" placeholder="your email" class="box">
         <input type="password" placeholder="your password" class="box">
         <p>forget your password <a href="#">click here</a></p>
-        <p>don't have an account <a href="register.html">create now</a></p>
+        <p>don't have an account <a href="register.php">create now</a></p>
         <input type="submit" value="login now" class="btn">
     </form>
 
 </header>
 
 <!-- header section ends -->
-
+<?php if (isset($_GET['error'])) { ?>
+	<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
+<?php } ?>
 <!-- home section starts  -->
 
 <section class="home" id="home">
