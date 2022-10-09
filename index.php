@@ -54,7 +54,9 @@
 <header class="header">
 
     <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
-
+    <?php if (isset($_GET['errorlogin'])) { ?>
+			<p style= "color:red;" ><?php echo $_GET['errorlogin']; ?></p>
+	<?php } ?>
     <nav class="navbar">
         <a href="#home">home</a>
         <a href="#features">features</a>
@@ -153,21 +155,21 @@
             <img src="image/feature-img-1.png" alt="">
             <h3>fresh and organic</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
-            <a href="#" class="btn">read more</a>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-2.png" alt="">
             <h3>free delivery</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
-            <a href="#" class="btn">read more</a>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-3.png" alt="">
             <h3>easy payments</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
-            <a href="#" class="btn">read more</a>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
     </div>
@@ -261,7 +263,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <a href="#" class="btn">add to cart</a>
+                <a href="dashboard.php" class="btn">add to cart</a>
             </div>
 
             <div class="swiper-slide box">
@@ -275,7 +277,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <a href="#" class="btn">add to cart</a>
+                <a href="dashboard.php" class="btn">add to cart</a>
             </div>
 
             <div class="swiper-slide box">
@@ -289,7 +291,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <a href="#" class="btn">add to cart</a>
+                <a href="dashboard.php" class="btn">add to cart</a>
             </div>
 
             <div class="swiper-slide box">
@@ -303,7 +305,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <a href="#" class="btn">add to cart</a>
+                <a href="dashboard.php" class="btn">add to cart</a>
             </div>
 
         </div>
@@ -327,28 +329,28 @@
             <img src="image/cat-1.png" alt="">
             <h3>vegitables</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="dashboard.php" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="image/cat-2.png" alt="">
             <h3>fresh fruits</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="dashboard.php" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="image/cat-3.png" alt="">
             <h3>dairy products</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="dashboard.php" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="image/cat-4.png" alt="">
             <h3>fresh meat</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="dashboard.php" class="btn">shop now</a>
         </div>
 
     </div>
@@ -444,7 +446,7 @@
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 
@@ -457,7 +459,7 @@
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 
@@ -470,7 +472,7 @@
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 

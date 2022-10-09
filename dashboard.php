@@ -1,4 +1,13 @@
+<?php 
+session_start();
+  
+    if ( (isset($_SESSION["Login"]) && isset($_SESSION['ID'])) || (isset($_COOKIE['member_login']) && isset($_COOKIE['random_password']) && isset($_COOKIE['random_selector'] ) )) 
+    {
+        require_once 'inc/config.php';
+        $userID= $_SESSION['ID'];
 
+        
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -489,6 +498,13 @@
 </section>
 
 <!-- footer section ends -->
+
+<?php 
+    }else{
+        header("Location: index.php?error=Youre not login yet.");
+        exit();
+    }
+    ?>
 
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
