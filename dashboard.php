@@ -34,12 +34,13 @@ session_start();
     <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Grocery </a>
 
     <nav class="navbar">
-        <a href="#home">home</a>
+        <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
         <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
+        <a href="feedback.php">feedback</a>
     </nav>
     <div class="icons">
         <div class="fas fa-bars" id="menu-btn"></div>

@@ -88,12 +88,13 @@ session_start();
     <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
 
     <nav class="navbar">
-        <a href="index.html">home</a>
+        <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
         <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
+        <a href="feedback.php">feedback</a>
     </nav>
 
     <div class="icons">
@@ -178,7 +179,7 @@ session_start();
                                         <p style="color:red;" id="error_para" ></p>
                                     </div>
 
-                                    <form class ="user"  id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+                                    <form class ="user"  action= "feed.php" id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
 			
 
                                         <div class="form-group">
@@ -201,7 +202,7 @@ session_start();
                                         </div>                                        
 
                                         <input class="btn btn-secondary btn-user btn-block" type="submit"
-                                                value="Submit" name="submit_form" />
+                                                value="Submit" name="feedback_form" />
 
 
                                     </form>
