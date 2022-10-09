@@ -489,8 +489,8 @@
     <div class="box-container">
 
         <div class="box">
-            <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, saepe.</p>
+            <h3> grocery online shopping <i class="fas fa-shopping-basket"></i> </h3>
+            <p>Memudahkan kerja-kerja membeli belah adalah tugas kami.</p>
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -501,10 +501,10 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
-            <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-            <a href="#" class="links"> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </a>
-            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +60 13456789 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +60 123455678 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> mohdzairi658@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> Mersing, Johor - 86900 </a>
         </div>
 
         <div class="box">
@@ -527,7 +527,7 @@
 
     </div>
 
-    <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+    <div class="credit"> created by <a href="https://youtu.be/lCCN_lkl3Xw"><span> mr. web designer </span></a> | all rights reserved </div>
 
 </section>
 
