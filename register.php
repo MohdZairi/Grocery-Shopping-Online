@@ -338,14 +338,14 @@
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
     <!-- Bootstrap core JavaScript-->
-    <script src="ifutem/vendor/jquery/jquery.min.js"></script>
-    <script src="ifutem/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="groceryonline/vendor/jquery/jquery.min.js"></script>
+    <script src="groceryonline/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="ifutem/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="groceryonline/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="ifutem/js/sb-admin-2.min.js"></script>
+    <script src="groceryonline/js/sb-admin-2.min.js"></script>
 
 </body>
 

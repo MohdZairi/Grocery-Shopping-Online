@@ -1,3 +1,15 @@
+<?php 
+session_start();
+  
+    if ( (isset($_SESSION["Login"]) && isset($_SESSION['ID'])) || (isset($_COOKIE['member_login']) && isset($_COOKIE['random_password']) && isset($_COOKIE['random_selector'] ) )) 
+    {
+        require_once 'inc/config.php';
+        $userID= $_SESSION['ID'];
+        $email =$_SESSION['Email'];
+
+        
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,72 +39,41 @@
     
     <script>
         function validate() {
-            var name =
-                document.forms.RegForm.FullName.value;
-            var uname =
-                document.forms.RegForm.UserName.value;
             var email =
                 document.forms.RegForm.EMail.value;
-            var phone =
-                document.forms.RegForm.Telephone.value;
-            var address =
-                document.forms.RegForm.Address.value;
-            var password =
-                document.forms.RegForm.Password.value;
-            var confirmpassword =
-                document.forms.RegForm.ConfirmPassword.value;
-            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
-            var regPhone=/^\d{10}$/;									 // Javascript reGex for Phone Number validation.
-            var regName = /\d+$/g;								 // Javascript reGex for Name validation
+            var title =
+                document.forms.RegForm.Subject.value;
+            var content =
+                document.forms.RegForm.Content.value;
+            var rating =
+                document.forms.RegForm.Rating.value;
 
-            if (name == "" || regName.test(name)) {
-                 error = " You Have To Write Your FullName. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-            if (uname == "" || regName.test(uname)) {
-                 error = " You Have To Write Your UserName. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-            if (phone == "" || !regPhone.test(phone)) {
-                 error = " Please enter valid phone number.";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
+            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+            var regRating=/^\d{1}$/;									 // Javascript reGex for Phone Number validation.
+            var regName = /\d+$/g;								 // Javascript reGex for Name validation
             
-            if (email == "" || !regEmail.test(email)) {
-                 error = " Please enter a valid e-mail address. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
            
-            if (address == "" ) {
-                 error = " You Have To Write Your Proper Address. ";
+            if (title == "" ) {
+                 error = " You Have To Write Your Proper Title. ";
                   document.getElementById( "error_para" ).innerHTML = error;
                   return false;
             }
-            if (password == "") {
-                error = " Please enter your password. ";
+            if (content == "") {
+                error = " PYou Have To Write Your Proper Content. ";
                   document.getElementById( "error_para" ).innerHTML = error;
                   return false;
             }
-            if(password.length <6){
-                error = " Password should be atleast 6 character long. ";
+            if(rating== ""){
+                error = " Rating should be filled. ";
                   document.getElementById( "error_para" ).innerHTML = error;
                   return false;
             }
-            if (confirmpassword == "") {
-                error = " Please enter your confirm password. ";
+            else if(!regRating.test(rating))
+            {
+                error = " Rating should be 1 until 5 only! ";
                   document.getElementById( "error_para" ).innerHTML = error;
                   return false;
-            }
-            if(password != confirmpassword){
-                error = " Password doesn't match. ";
-                  document.getElementById( "error_para" ).innerHTML = error;
-                  return false;
-            }
-            
+            }            
             return true;
         }
     </script>
@@ -190,55 +171,37 @@
                                 <div class="p-5">
 
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4 font-weight-bold">REGISTER</h1>
+                                        <h1 class="h4 text-gray-900 mb-4 font-weight-bold">FEEDBACK</h1>
                                         <?php if (isset($_GET['error'])) { ?>
 											<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
 										<?php } ?>
                                         <p style="color:red;" id="error_para" ></p>
                                     </div>
 
-                                    <form class ="user" action= "register-check.php" id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+                                    <form class ="user"  id="form" name="RegForm" onsubmit="return validate()" method="post" enctype="multipart/form-data">
 			
 
                                         <div class="form-group">
-                                            <input type="fullname" class="form-control form-control-user"
-                                               name="FullName"
-                                                placeholder="FullName">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="username" class="form-control form-control-user"
-                                               name="UserName"
-                                                placeholder="UserName">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="phone" class="form-control form-control-user"
-                                               name="Telephone" placeholder="Phone Number">
-                                        </div>
-                                        <div class="form-group">
                                             <input type="email" class="form-control form-control-user checking_email"
                                                 name="EMail" 
-                                                placeholder="Email">
+                                                value="<?php echo $email; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <input type="address" class="form-control form-control-user"
-                                                name="Address" 
-                                                placeholder="Address">
+                                            <input type="subject" class="form-control form-control-user"
+                                                name="Subject" 
+                                                placeholder="Subject">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                               name="Password" placeholder="Password">
+                                            <input type="Content" class="form-control form-control-user"
+                                               name="Content" placeholder="Content">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                name="ConfirmPassword" placeholder="Confirm Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="file" name="image" id = "image" accept=".jpg, .jpeg, .png">
-                                        </div>
-                                        
+                                            <input type="rating" class="form-control form-control-user"
+                                                name="Rating" placeholder="Rating">
+                                        </div>                                        
 
                                         <input class="btn btn-secondary btn-user btn-block" type="submit"
-                                                value="Register" name="submit_form" />
+                                                value="Submit" name="submit_form" />
 
 
                                     </form>
@@ -276,8 +239,8 @@
     <div class="box-container">
 
         <div class="box">
-            <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, saepe.</p>
+            <h3> grocery online shopping <i class="fas fa-shopping-basket"></i> </h3>
+            <p>Memudahkan kerja-kerja membeli belah adalah tugas kami.</p>
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -288,10 +251,10 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
-            <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
-            <a href="#" class="links"> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </a>
-            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +60 13456789 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +60 123455678 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> mohdzairi658@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> Mersing, Johor - 86900 </a>
         </div>
 
         <div class="box">
@@ -314,13 +277,17 @@
 
     </div>
 
-    <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+    <div class="credit"> created by <a href="https://youtu.be/lCCN_lkl3Xw"><span> mr. web designer </span></a> | all rights reserved </div>
 
 </section>
 
 <!-- footer section ends -->
-
-
+<?php 
+    }else{
+        header("Location: index.php?error=Login First Before Submit Your Feedback.");
+        exit();
+    }
+    ?>
 
 
 
@@ -338,14 +305,14 @@
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
     <!-- Bootstrap core JavaScript-->
-    <script src="ifutem/vendor/jquery/jquery.min.js"></script>
-    <script src="ifutem/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="groceryonline/vendor/jquery/jquery.min.js"></script>
+    <script src="groceryonline/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="ifutem/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="groceryonline/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="ifutem/js/sb-admin-2.min.js"></script>
+    <script src="groceryonline/js/sb-admin-2.min.js"></script>
 
 </body>
 

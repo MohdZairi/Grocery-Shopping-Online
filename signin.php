@@ -101,6 +101,8 @@ if(isset($_POST['login_form']))
 
              $_SESSION["Login"] = true;
              $_SESSION["ID"]=$row['ID'];
+             $_SESSION["Email"]=$row['Email'];
+             $_SESSION["Picture"]=$row['Picture'];
              header("Location: dashboard.php");
              exit();
 
