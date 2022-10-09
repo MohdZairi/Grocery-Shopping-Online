@@ -87,22 +87,23 @@ session_start();
         <a href="#" class="btn">checkout</a>
     </div>
     <form action="logout.php" class="login-form">
+
         <a href="logout.php"><input type="submit" value="logout now" class="btn"></a>
     </form>
 
 </header>
 
 <!-- header section ends -->
-<?php if (isset($_GET['error'])) { ?>
-	<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
-<?php } ?>
+
 <!-- home section starts  -->
 
 <section class="home" id="home">
 
     <div class="content">
         <h3>fresh and <span>organic</span> products for your</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam libero nostrum veniam facere tempore nisi.</p>
+        <?php if (isset($_GET['error'])) { ?>
+            <p style= "color:red;" ><?php echo $_GET['error']; ?></p>
+        <?php } ?>
         <a href="#" class="btn">shop now</a>
     </div>
 
@@ -502,7 +503,7 @@ session_start();
 
 <?php 
     }else{
-        header("Location: index.php?error=Youre not login yet.");
+        header("Location: index.php?errorlogin=Youre not login yet.");
         exit();
     }
     ?>

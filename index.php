@@ -54,16 +54,14 @@
 <header class="header">
 
     <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
-    <?php if (isset($_GET['errorlogin'])) { ?>
-			<p style= "color:red;" ><?php echo $_GET['errorlogin']; ?></p>
-	<?php } ?>
     <nav class="navbar">
-        <a href="#home">home</a>
+        <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
         <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
+        <a href="feedback.php">feedback</a>
     </nav>
     <div class="icons">
         <div class="fas fa-bars" id="menu-btn"></div>
@@ -126,16 +124,16 @@
 </header>
 
 <!-- header section ends -->
-<?php if (isset($_GET['error'])) { ?>
-	<p style= "color:red;" ><?php echo $_GET['error']; ?></p>
-<?php } ?>
+
 <!-- home section starts  -->
 
 <section class="home" id="home">
 
     <div class="content">
         <h3>fresh and <span>organic</span> products for your</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam libero nostrum veniam facere tempore nisi.</p>
+        <?php if (isset($_GET['errorlogin'])) { ?>
+            <p style= "color:red;" ><?php echo $_GET['errorlogin']; ?></p>
+        <?php } ?>
         <a href="#" class="btn">shop now</a>
     </div>
 

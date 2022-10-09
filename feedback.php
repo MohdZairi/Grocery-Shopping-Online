@@ -285,7 +285,7 @@ session_start();
 <!-- footer section ends -->
 <?php 
     }else{
-        header("Location: index.php?error=Login First Before Submit Your Feedback.");
+        header("Location: index.php?errorlogin=Login First Before Submit Your Feedback.");
         exit();
     }
     ?>

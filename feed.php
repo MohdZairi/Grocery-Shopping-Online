@@ -21,8 +21,6 @@ if(isset($_POST["feedback_form"]))
 	 $rating = validate_data( $_POST['Rating'] );
      
 
-
-	
 		$sql2 = "INSERT INTO feedback (Email,Subject,Content,Rating,Picture) VALUES('$email','$subject','$content','$rating','$image')";
 		$result2 = mysqli_query($conn, $sql2);
 		if ($result2) 
