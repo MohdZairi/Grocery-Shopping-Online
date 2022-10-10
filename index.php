@@ -180,182 +180,188 @@
 
 <section class="products" id="products">
 
-    <h1 class="heading"> our <span>products</span> </h1>
+    <h1 class="heading"> our <span>vegetable</span> </h1>
 
     <div class="swiper product-slider">
 
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
 
-            <div class="swiper-slide box">
-                <img src="image/product-1.png" alt="">
-                <h3>fresh orange</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
+            $sql = "SELECT * FROM product where Category='Vegetable' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
 
-            <div class="swiper-slide box">
-                <img src="image/product-2.png" alt="">
-                <h3>fresh onion</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/product-3.png" alt="">
-                <h3>fresh meat</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/product-4.png" alt="">
-                <h3>fresh cabbage</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
         </div>
 
     </div>
 
+    <h1 class="heading"> our <span>fruit</span> </h1>
+
     <div class="swiper product-slider">
 
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
 
-            <div class="swiper-slide box">
-                <img src="image/product-5.png" alt="">
-                <h3>fresh potato</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="dashboard.php" class="btn">add to cart</a>
-            </div>
+            $sql = "SELECT * FROM product where Category='Fruit' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
 
-            <div class="swiper-slide box">
-                <img src="image/product-6.png" alt="">
-                <h3>fresh avocado</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="dashboard.php" class="btn">add to cart</a>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/product-7.png" alt="">
-                <h3>fresh carrot</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="dashboard.php" class="btn">add to cart</a>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/product-8.png" alt="">
-                <h3>green lemon</h3>
-                <div class="price"> $4.99/- - 10.99/- </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <a href="dashboard.php" class="btn">add to cart</a>
-            </div>
-
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
         </div>
 
     </div>
 
+    <h1 class="heading"> our <span>dairy product</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
+
+            $sql = "SELECT * FROM product where Category='Dairy Product' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
+
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
+        </div>
+
+    </div>
+
+    <h1 class="heading"> our <span>fresh meat</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
+
+            $sql = "SELECT * FROM product where Category='Fresh Meat' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
+
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
+        </div>
+
+    </div>
 
 </section>
 
 <!-- products section ends -->
 
-<!-- categories section starts  -->
 
-<section class="categories" id="categories">
-
-    <h1 class="heading"> product <span>categories</span> </h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <img src="image/cat-1.png" alt="">
-            <h3>vegitables</h3>
-            <p>upto 45% off</p>
-            <a href="dashboard.php" class="btn">shop now</a>
-        </div>
-
-        <div class="box">
-            <img src="image/cat-2.png" alt="">
-            <h3>fresh fruits</h3>
-            <p>upto 45% off</p>
-            <a href="dashboard.php" class="btn">shop now</a>
-        </div>
-
-        <div class="box">
-            <img src="image/cat-3.png" alt="">
-            <h3>dairy products</h3>
-            <p>upto 45% off</p>
-            <a href="dashboard.php" class="btn">shop now</a>
-        </div>
-
-        <div class="box">
-            <img src="image/cat-4.png" alt="">
-            <h3>fresh meat</h3>
-            <p>upto 45% off</p>
-            <a href="dashboard.php" class="btn">shop now</a>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- categories section ends -->
+<!-- review section starts  -->
 
 <!-- review section starts  -->
 
@@ -365,60 +371,37 @@
 
     <div class="swiper review-slider">
 
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
 
-            <div class="swiper-slide box">
-                <img src="image/pic-1.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
+            $sql = "SELECT * FROM feedback ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
 
-            <div class="swiper-slide box">
-                <img src="image/pic-2.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/pic-3.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/pic-4.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $content  =$row['Content'];
+                            $subject =$row['Subject'];
+                            $rating  =$row['Rating'];
+                            $nrating= (int)$rating;
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $subject; ?></h3>
+                                <p><?php echo $content; ?></p>
+                                
+                            <div class="stars">
+                                <h3><?php echo $rating ?><i class="fas fa-star"></i> </h3> 
+                            </div>
+                        </div>
+            <?php 	} 
+                }?>
         </div>
 
     </div>

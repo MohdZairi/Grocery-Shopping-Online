@@ -361,9 +361,7 @@ session_start();
                                 <p><?php echo $content; ?></p>
                                 
                             <div class="stars">
-
-                            <h3><?php echo $rating; ?><i class="fas fa-star"></i></h3>
-                                
+                                    <h3><?php echo $rating ?><i class="fas fa-star"></i> </h3>
                             </div>
                         </div>
             <?php 	} 
