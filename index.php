@@ -224,7 +224,137 @@
 
     </div>
 
-    
+    <h1 class="heading"> our <span>fruit</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
+
+            $sql = "SELECT * FROM product where Category='Fruit' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
+
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
+        </div>
+
+    </div>
+
+    <h1 class="heading"> our <span>dairy product</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
+
+            $sql = "SELECT * FROM product where Category='Dairy Product' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
+
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
+        </div>
+
+    </div>
+
+    <h1 class="heading"> our <span>fresh meat</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
+
+            $sql = "SELECT * FROM product where Category='Fresh Meat' ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
+
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $name  =$row['Name'];
+                            $price =$row['Price'];
+                            $quantity  =$row['Quantity'];
+                            
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $name; ?></h3>
+                                <div class="price">RM <?php echo $price; ?></div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="dashboard.php" class="btn">add to cart</a>
+                                
+                        </div>
+            <?php 	} 
+                }?>
+        </div>
+
+    </div>
 
 </section>
 
