@@ -1,6 +1,7 @@
 <?php 
 include "inc/config.php";
 session_start();
+$uname=  $_SESSION["Username"];
 session_unset();
 session_destroy();
 
@@ -13,6 +14,8 @@ $cookie_expiration_time = $current_time - (30*24*60*60);
 setcookie('member_login', $row['ID'],$cookie_expiration_time);
 setcookie('random_password', $random_password,$cookie_expiration_time);
 setcookie('random_selector', $random_selector,$cookie_expiration_time);
+
+
 
 
 header("Location: index.php");

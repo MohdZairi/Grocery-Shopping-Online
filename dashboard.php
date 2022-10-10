@@ -335,60 +335,39 @@ session_start();
 
     <div class="swiper review-slider">
 
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" >
+            <?php 
+                include("inc/config.php");
 
-            <div class="swiper-slide box">
-                <img src="image/pic-1.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
+            $sql = "SELECT * FROM feedback ";
+            $result = mysqli_query($conn, $sql);
+            ?>
+                    
+            <?php
+                if (mysqli_num_rows($result)) 
+                {
 
-            <div class="swiper-slide box">
-                <img src="image/pic-2.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
+                    while ($row = mysqli_fetch_array($result)) 
+                    {
+                            $image = $row['Picture'];
+                            $content  =$row['Content'];
+                            $subject =$row['Subject'];
+                            $rating  =$row['Rating'];
+                            $count = 0;
+            ?>
+                    <div class="swiper-slide box">
+                            <img src="<?= $image ?>" alt="">
+                                <h3><?php echo $subject; ?></h3>
+                                <p><?php echo $content; ?></p>
+                                
+                            <div class="stars">
 
-            <div class="swiper-slide box">
-                <img src="image/pic-3.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="image/pic-4.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
-                <h3>john deo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-
+                            <h3><?php echo $rating; ?><i class="fas fa-star"></i></h3>
+                                
+                            </div>
+                        </div>
+            <?php 	} 
+                }?>
         </div>
 
     </div>
@@ -507,6 +486,7 @@ session_start();
         exit();
     }
     ?>
+
 
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
