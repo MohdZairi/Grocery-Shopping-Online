@@ -37,7 +37,6 @@ session_start();
         <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
-        <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
         <a href="feedback.php">feedback</a>
@@ -122,21 +121,18 @@ session_start();
         <div class="box">
             <img src="image/feature-img-1.png" alt="">
             <h3>fresh and organic</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-2.png" alt="">
             <h3>free delivery</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-3.png" alt="">
             <h3>easy payments</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
             <a href="#" class="btn">read more</a>
         </div>
 
@@ -156,7 +152,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-                include("inc/config.php");
+             
 
             $sql = "SELECT * FROM product where Category='Vegetable' ";
             $result = mysqli_query($conn, $sql);
@@ -172,6 +168,7 @@ session_start();
                             $name  =$row['Name'];
                             $price =$row['Price'];
                             $quantity  =$row['Quantity'];
+                            $link='addcart.php?name='.$name.'';
                             
             ?>
                     <div class="swiper-slide box">
@@ -185,7 +182,7 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </div>
-                                <a href="dashboard.php" class="btn">add to cart</a>
+                                <a href="<?= $link ?>" class="btn">add to cart</a>
                                 
                         </div>
             <?php 	} 
@@ -200,7 +197,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-                include("inc/config.php");
+             
 
             $sql = "SELECT * FROM product where Category='Fruit' ";
             $result = mysqli_query($conn, $sql);
@@ -216,6 +213,7 @@ session_start();
                             $name  =$row['Name'];
                             $price =$row['Price'];
                             $quantity  =$row['Quantity'];
+                            $link='addcart.php?name='.$name.'';
                             
             ?>
                     <div class="swiper-slide box">
@@ -229,7 +227,7 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </div>
-                                <a href="dashboard.php" class="btn">add to cart</a>
+                                <a href="<?= $link ?>" class="btn">add to cart</a>
                                 
                         </div>
             <?php 	} 
@@ -244,7 +242,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-                include("inc/config.php");
+            
 
             $sql = "SELECT * FROM product where Category='Dairy Product' ";
             $result = mysqli_query($conn, $sql);
@@ -273,7 +271,7 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </div>
-                                <a href="dashboard.php" class="btn">add to cart</a>
+                                <a href="<?= $link ?>" class="btn">add to cart</a>
                                 
                         </div>
             <?php 	} 
@@ -288,7 +286,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-                include("inc/config.php");
+             
 
             $sql = "SELECT * FROM product where Category='Fresh Meat' ";
             $result = mysqli_query($conn, $sql);
@@ -317,7 +315,7 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </div>
-                                <a href="dashboard.php" class="btn">add to cart</a>
+                                <a href="<?= $link ?>" class="btn">add to cart</a>
                                 
                         </div>
             <?php 	} 
@@ -341,7 +339,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-                include("inc/config.php");
+             
 
             $sql = "SELECT * FROM feedback ";
             $result = mysqli_query($conn, $sql);
@@ -461,7 +459,6 @@ session_start();
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
-            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
         </div>
