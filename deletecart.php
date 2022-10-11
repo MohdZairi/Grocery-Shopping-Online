@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'inc/config.php';
-
+//delte order
 $userID= $_SESSION['ID'];
 $name= $_GET['name'];
 
