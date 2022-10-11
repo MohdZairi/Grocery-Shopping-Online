@@ -24,6 +24,37 @@ session_start();
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <script>
+        function validate() {
+            var email =
+                document.forms.RegForm.EMail.value;
+            var password =
+                document.forms.RegForm.Password.value;
+            var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+
+
+            if (email == "" ) {
+                 error = " Please enter your e-mail address. ";
+                  document.getElementById( "error_para" ).innerHTML = error;
+                  return false;
+            }
+            else if (!regEmail.test(email))
+            {
+                error = " Please enter a valid e-mail address. ";
+                  document.getElementById( "error_para" ).innerHTML = error;
+                  return false;
+            }
+           
+            if (password == "") {
+                error = " Please enter your password. ";
+                  document.getElementById( "error_para" ).innerHTML = error;
+                  return false;
+            }
+                            
+
+            return true;
+        }
+    </script>
 </head>
 <body>
     
@@ -31,12 +62,12 @@ session_start();
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Grocery </a>
-
+    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
     <nav class="navbar">
         <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
+        <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
         <a href="feedback.php">feedback</a>
@@ -46,7 +77,6 @@ session_start();
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
         <div class="fas fa-user" id="login-btn"></div>
-       
     </div>
 
     <form action="" class="search-form">
@@ -55,36 +85,42 @@ session_start();
     </form>
 
     <div class="shopping-cart">
-        <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="image/cart-img-1.png" alt="">
-            <div class="content">
-                <h3>watermelon</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="image/cart-img-2.png" alt="">
-            <div class="content">
-                <h3>onion</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-trash"></i>
-            <img src="image/cart-img-3.png" alt="">
-            <div class="content">
-                <h3>chicken</h3>
-                <span class="price">$4.99/-</span>
-                <span class="quantity">qty : 1</span>
-            </div>
-        </div>
-        <div class="total"> total : $19.69/- </div>
-        <a href="#" class="btn">checkout</a>
+    <?php 
+             
+             $total=0;
+             $sql = "SELECT * FROM cart where UserID='$userID' AND Status='$total' ";
+             $result = mysqli_query($conn, $sql);
+             ?>
+                     
+             <?php
+                 if (mysqli_num_rows($result)) 
+                 {
+ 
+                     while ($row = mysqli_fetch_array($result)) 
+                     {
+                             $gambar = $row['Image'];
+                             $nama  =$row['Name'];
+                             $harga =$row['Price'];
+                             $jumlah  =$row['Quantity'];
+                             $link='deletecart.php?name='.$nama.'';
+                             $total = $total + (double)$harga;
+                             
+             ?>
+                         <div class="box">
+                            <a href="<?= $link ?>"><i class="fas fa-trash"></i></a>
+                            <img src="<?= $gambar ?>" alt="">
+                            <div class="content">
+                                <h3><?php echo $nama; ?></h3>
+                                <span class="price">RM <?php echo $harga; ?> </span>
+                                <span class="quantity">qty : <?php echo $jumlah; ?></span>
+                            </div>
+                        </div>
+             <?php 	} 
+                 }?>
+        <div class="total"> total : RM<?php echo $total ?> </div>
+        <a href="clearcart.php" class="btn">checkout</a>
     </div>
+
     <form action="logout.php" class="login-form">
 
         <a href="logout.php"><input type="submit" value="logout now" class="btn"></a>
@@ -121,19 +157,22 @@ session_start();
         <div class="box">
             <img src="image/feature-img-1.png" alt="">
             <h3>fresh and organic</h3>
-            <a href="#" class="btn">read more</a>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-2.png" alt="">
             <h3>free delivery</h3>
-            <a href="#" class="btn">read more</a>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
         <div class="box">
             <img src="image/feature-img-3.png" alt="">
             <h3>easy payments</h3>
-            <a href="#" class="btn">read more</a>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="dashboard.php" class="btn">read more</a>
         </div>
 
     </div>
@@ -146,13 +185,15 @@ session_start();
 
 <section class="products" id="products">
 
-    <h1 class="heading"> our <span>vegetable</span> </h1>
+<section class="products" id="products">
+
+<h1 class="heading"> our <span>vegetable</span> </h1>
 
     <div class="swiper product-slider">
 
         <div class="swiper-wrapper" >
             <?php 
-             
+            
 
             $sql = "SELECT * FROM product where Category='Vegetable' ";
             $result = mysqli_query($conn, $sql);
@@ -193,141 +234,148 @@ session_start();
 
     <h1 class="heading"> our <span>fruit</span> </h1>
 
-    <div class="swiper product-slider">
+<div class="swiper product-slider">
 
-        <div class="swiper-wrapper" >
-            <?php 
-             
+    <div class="swiper-wrapper" >
+        <?php 
+        
 
-            $sql = "SELECT * FROM product where Category='Fruit' ";
-            $result = mysqli_query($conn, $sql);
-            ?>
-                    
-            <?php
-                if (mysqli_num_rows($result)) 
+        $sql = "SELECT * FROM product where Category='Fruit' ";
+        $result = mysqli_query($conn, $sql);
+        ?>
+                
+        <?php
+            if (mysqli_num_rows($result)) 
+            {
+
+                while ($row = mysqli_fetch_array($result)) 
                 {
-
-                    while ($row = mysqli_fetch_array($result)) 
-                    {
-                            $image = $row['Picture'];
-                            $name  =$row['Name'];
-                            $price =$row['Price'];
-                            $quantity  =$row['Quantity'];
-                            $link='addcart.php?name='.$name.'';
+                        $image = $row['Picture'];
+                        $name  =$row['Name'];
+                        $price =$row['Price'];
+                        $quantity  =$row['Quantity'];
+                        $link='addcart.php?name='.$name.'';
+                        
+        ?>
+                <div class="swiper-slide box">
+                        <img src="<?= $image ?>" alt="">
+                            <h3><?php echo $name; ?></h3>
+                            <div class="price">RM <?php echo $price; ?></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <a href="<?= $link ?>" class="btn">add to cart</a>
                             
-            ?>
-                    <div class="swiper-slide box">
-                            <img src="<?= $image ?>" alt="">
-                                <h3><?php echo $name; ?></h3>
-                                <div class="price">RM <?php echo $price; ?></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <a href="<?= $link ?>" class="btn">add to cart</a>
-                                
-                        </div>
-            <?php 	} 
-                }?>
-        </div>
-
+                    </div>
+        <?php 	} 
+            }?>
     </div>
 
-    <h1 class="heading"> our <span>dairy product</span> </h1>
+</div>
 
-    <div class="swiper product-slider">
 
-        <div class="swiper-wrapper" >
-            <?php 
-            
+<h1 class="heading"> our <span>dairy product</span> </h1>
 
-            $sql = "SELECT * FROM product where Category='Dairy Product' ";
-            $result = mysqli_query($conn, $sql);
-            ?>
-                    
-            <?php
-                if (mysqli_num_rows($result)) 
+<div class="swiper product-slider">
+
+    <div class="swiper-wrapper" >
+        <?php 
+        
+
+        $sql = "SELECT * FROM product where Category='Dairy Product' ";
+        $result = mysqli_query($conn, $sql);
+        ?>
+                
+        <?php
+            if (mysqli_num_rows($result)) 
+            {
+
+                while ($row = mysqli_fetch_array($result)) 
                 {
-
-                    while ($row = mysqli_fetch_array($result)) 
-                    {
-                            $image = $row['Picture'];
-                            $name  =$row['Name'];
-                            $price =$row['Price'];
-                            $quantity  =$row['Quantity'];
+                        $image = $row['Picture'];
+                        $name  =$row['Name'];
+                        $price =$row['Price'];
+                        $quantity  =$row['Quantity'];
+                        $link='addcart.php?name='.$name.'';
+                        
+        ?>
+                <div class="swiper-slide box">
+                        <img src="<?= $image ?>" alt="">
+                            <h3><?php echo $name; ?></h3>
+                            <div class="price">RM <?php echo $price; ?></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <a href="<?= $link ?>" class="btn">add to cart</a>
                             
-            ?>
-                    <div class="swiper-slide box">
-                            <img src="<?= $image ?>" alt="">
-                                <h3><?php echo $name; ?></h3>
-                                <div class="price">RM <?php echo $price; ?></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <a href="<?= $link ?>" class="btn">add to cart</a>
-                                
-                        </div>
-            <?php 	} 
-                }?>
-        </div>
-
+                    </div>
+        <?php 	} 
+            }?>
     </div>
 
-    <h1 class="heading"> our <span>fresh meat</span> </h1>
+</div>
 
-    <div class="swiper product-slider">
 
-        <div class="swiper-wrapper" >
-            <?php 
-             
+<h1 class="heading"> our <span>fresh meat</span> </h1>
 
-            $sql = "SELECT * FROM product where Category='Fresh Meat' ";
-            $result = mysqli_query($conn, $sql);
-            ?>
-                    
-            <?php
-                if (mysqli_num_rows($result)) 
+<div class="swiper product-slider">
+
+    <div class="swiper-wrapper" >
+        <?php 
+        
+
+        $sql = "SELECT * FROM product where Category='Fresh Meat' ";
+        $result = mysqli_query($conn, $sql);
+        ?>
+                
+        <?php
+            if (mysqli_num_rows($result)) 
+            {
+
+                while ($row = mysqli_fetch_array($result)) 
                 {
-
-                    while ($row = mysqli_fetch_array($result)) 
-                    {
-                            $image = $row['Picture'];
-                            $name  =$row['Name'];
-                            $price =$row['Price'];
-                            $quantity  =$row['Quantity'];
+                        $image = $row['Picture'];
+                        $name  =$row['Name'];
+                        $price =$row['Price'];
+                        $quantity  =$row['Quantity'];
+                        $link='addcart.php?name='.$name.'';
+                        
+        ?>
+                <div class="swiper-slide box">
+                        <img src="<?= $image ?>" alt="">
+                            <h3><?php echo $name; ?></h3>
+                            <div class="price">RM <?php echo $price; ?></div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <a href="<?= $link ?>" class="btn">add to cart</a>
                             
-            ?>
-                    <div class="swiper-slide box">
-                            <img src="<?= $image ?>" alt="">
-                                <h3><?php echo $name; ?></h3>
-                                <div class="price">RM <?php echo $price; ?></div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <a href="<?= $link ?>" class="btn">add to cart</a>
-                                
-                        </div>
-            <?php 	} 
-                }?>
-        </div>
-
+                    </div>
+        <?php 	} 
+            }?>
     </div>
+
+</div>
+
 
 </section>
 
 <!-- products section ends -->
 
+
+<!-- review section starts  -->
 
 <!-- review section starts  -->
 
@@ -339,7 +387,7 @@ session_start();
 
         <div class="swiper-wrapper" >
             <?php 
-             
+                include("inc/config.php");
 
             $sql = "SELECT * FROM feedback ";
             $result = mysqli_query($conn, $sql);
@@ -355,7 +403,7 @@ session_start();
                             $content  =$row['Content'];
                             $subject =$row['Subject'];
                             $rating  =$row['Rating'];
-                            $count = 0;
+                            $nrating= (int)$rating;
             ?>
                     <div class="swiper-slide box">
                             <img src="<?= $image ?>" alt="">
@@ -363,7 +411,7 @@ session_start();
                                 <p><?php echo $content; ?></p>
                                 
                             <div class="stars">
-                                    <h3><?php echo $rating ?><i class="fas fa-star"></i> </h3>
+                                <h3><?php echo $rating ?><i class="fas fa-star"></i> </h3> 
                             </div>
                         </div>
             <?php 	} 
@@ -393,7 +441,7 @@ session_start();
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 
@@ -406,7 +454,7 @@ session_start();
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 
@@ -419,7 +467,7 @@ session_start();
                 </div>
                 <h3>fresh and organic vegitables and fruits</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.</p>
-                <a href="#" class="btn">read more</a>
+                <a href="dashboard.php" class="btn">read more</a>
             </div>
         </div>
 
@@ -459,6 +507,7 @@ session_start();
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
         </div>
@@ -485,6 +534,17 @@ session_start();
         exit();
     }
     ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

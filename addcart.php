@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'inc/config.php';
-
+//upload order into dashboard
 $name= $_GET['name'];
 $userID= $_SESSION['ID'];
 
