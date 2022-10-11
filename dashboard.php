@@ -67,7 +67,6 @@ session_start();
         <a href="dashboard.php">home</a>
         <a href="#features">features</a>
         <a href="#products">products</a>
-        <a href="#categories">categories</a>
         <a href="#review">review</a>
         <a href="#blogs">blogs</a>
         <a href="feedback.php">feedback</a>
@@ -507,7 +506,6 @@ session_start();
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
-            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
             <a href="#" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
         </div>
